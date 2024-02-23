@@ -18,15 +18,11 @@ Strengthen your understanding of key concepts with our quiz feature. Test your k
 
 
 
-## Project glimpse:
+## Project glimpse: 
 
-- ### Splash Screen and Logo 
-
-![LogoForProject](https://github.com/anuragsharmark/MinorProject/assets/72140902/cd03dfe2-c42a-4586-bdce-e192dd0ade61)
-
-- ### Inside Project  
-
-https://github.com/anuragsharmark/MinorProject/assets/72140902/ba42a394-412e-49c5-8b5b-40d2515cddac
+<div align="center">
+  <video src="https://github.com/anuragsharmark/MinorProject/assets/72140902/bf3d7974-6783-4071-b4f5-19d969594b11" width=400/>
+</div>
 
 ## How to Get Started:
 1. **Download and Installation:** Clone or download the repository and follow the installation instructions in the documentation.
