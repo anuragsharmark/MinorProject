@@ -14,37 +14,34 @@ class _CalculatorState extends State<Calculator> {
   String result = '0';
   bool IsCal = false;
   bool IsClick = false;
+  bool IsDoubleClick = false;
 
-  double getNumber(double input) =>
-      double.parse('$input'.substring(0, '$input'.indexOf('.') + 3));
+  double getNumber(double input) {
+    return double.parse(input.toStringAsFixed(2));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color.fromRGBO(252, 238, 237, 1),
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          foregroundColor: Colors.black,
-          backgroundColor: Color.fromRGBO(247, 164, 158, 1),
-          centerTitle: true,
-          title: Text(
-            'Calculator',
-            style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),
-          ),
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(252, 238, 237, 1),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Calculator',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(
-              height: 46,
-            ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const SizedBox(
+            height: 46,
+          ),
+          Wrap(children: [
             Container(
               decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 2, color: Colors.grey),
-                ),
+                border:
+                    Border(bottom: BorderSide(width: 2, color: Colors.grey)),
               ),
               padding: EdgeInsets.symmetric(horizontal: 10),
               alignment: Alignment.centerRight,
@@ -58,6 +55,8 @@ class _CalculatorState extends State<Calculator> {
                 ),
               ),
             ),
+          ]),
+          Wrap(children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
               alignment: Alignment.centerRight,
@@ -71,145 +70,134 @@ class _CalculatorState extends State<Calculator> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 50,
-            ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyButtonWidget(
-                      value: 'C',
-                      ButtonColor: Colors.red,
-                      BorderColor: Colors.red,
-                      TextColor: Colors.white,
-                    ),
-                    MyButtonWidget(
-                      value: '⌫',
-                      TextColor: Colors.red,
-                      BorderColor: Colors.red,
-                      FontSize: 32,
-                    ),
-                    MyButtonWidget(
-                      value: '÷',
-                      TextColor: Colors.blue,
-                      BorderColor: Colors.blue,
-                    ),
-                    MyButtonWidget(
-                      value: '%',
-                      FontSize: 32,
-                      TextColor: Colors.blue,
-                      BorderColor: Colors.blue,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyButtonWidget(
+          ]),
+          const SizedBox(
+            height: 50,
+          ),
+          Expanded(
+              child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButtonWidget(
+                    value: 'C',
+                    ButtonColor: Colors.red,
+                    BorderColor: Colors.red,
+                    TextColor: Colors.white,
+                  ),
+                  MyButtonWidget(
+                    value: '⌫',
+                    TextColor: Colors.red,
+                    BorderColor: Colors.red,
+                    FontSize: 32,
+                  ),
+                  MyButtonWidget(
+                    value: '÷',
+                    TextColor: Colors.blue,
+                    BorderColor: Colors.blue,
+                  ),
+                  MyButtonWidget(
+                    value: '%',
+                    FontSize: 32,
+                    TextColor: Colors.blue,
+                    BorderColor: Colors.blue,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButtonWidget(
                       value: '7',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '8',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '9',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
-                      value: 'X',
-                      FontSize: 32,
-                      TextColor: Colors.blue,
-                      BorderColor: Colors.blue,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
+                    value: 'X',
+                    FontSize: 32,
+                    TextColor: Colors.blue,
+                    BorderColor: Colors.blue,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButtonWidget(
                       value: '4',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '5',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '6',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
-                      value: '-',
-                      TextColor: Colors.blue,
-                      BorderColor: Colors.blue,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
+                    value: '-',
+                    TextColor: Colors.blue,
+                    BorderColor: Colors.blue,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButtonWidget(
                       value: '1',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '2',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '3',
-                      BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                    ),
-                    MyButtonWidget(
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  MyButtonWidget(
                       value: '+',
                       BorderColor: Colors.blue,
-                      TextColor: Colors.blue,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                SingleChildScrollView(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MyButtonWidget(
-                        value: '0',
-                        BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                        ButtonColor: Color.fromRGBO(148, 141, 113, 1),
-                        BtnWidth: 180,
-                      ),
-                      MyButtonWidget(
-                        value: '.',
-                        BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                      ),
-                      MyButtonWidget(
-                        value: '=',
-                        BorderColor: Color.fromRGBO(148, 141, 113, 1),
-                        FontSize: 52,
-                        ButtonColor: Color.fromRGBO(148, 141, 113, 1),
-                      )
-                    ],
+                      TextColor: Colors.blue)
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyButtonWidget(
+                    value: '0',
+                    BorderColor: Color.fromRGBO(148, 141, 113, 1),
+                    ButtonColor: Color.fromRGBO(148, 141, 113, 1),
+                    BtnWidth: 180,
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
+                  MyButtonWidget(
+                      value: '.',
+                      BorderColor: Color.fromRGBO(148, 141, 113, 1)),
+                  IsDoubleClick
+                      ? Container()
+                      : MyButtonWidget(
+                          value: '=',
+                          BorderColor: Color.fromRGBO(148, 141, 113, 1),
+                          FontSize: 52,
+                          ButtonColor: Color.fromRGBO(148, 141, 113, 1))
+                ],
+              ),
+            ],
+          ))
+        ],
       ),
     );
   }
@@ -275,7 +263,7 @@ class _CalculatorState extends State<Calculator> {
               userinput.contains('÷') ||
               userinput.contains('%'))) {
         return;
-      } else if (value == '.' && userinput[(userinput.length - 1)] == '.') {
+      } else if (value == '.' && userinput.endsWith('.')) {
         return;
       }
     }
@@ -283,6 +271,7 @@ class _CalculatorState extends State<Calculator> {
     if (value == 'C') {
       IsClick = false;
       IsCal = false;
+      IsDoubleClick = false;
       userinput = '';
       result = '0';
       return;
@@ -293,6 +282,7 @@ class _CalculatorState extends State<Calculator> {
       userinput = userinput.substring(0, userinput.length - 1);
       IsCal = false;
       IsClick = false;
+      IsDoubleClick = false;
       return;
     } else if (value == '=') {
       if (userinput.isEmpty) {
@@ -308,6 +298,12 @@ class _CalculatorState extends State<Calculator> {
       }
       IsCal = true;
       var inputVal = userinput;
+      if (inputVal == '1÷0' && IsCal) {
+        userinput = 'Not Possible';
+        result = 'Not Possible';
+        IsDoubleClick = true;
+        return;
+      }
       inputVal = inputVal.replaceAll('X', '*');
       inputVal = inputVal.replaceAll('÷', '/');
       Parser p = Parser();
